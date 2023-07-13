@@ -12,8 +12,7 @@ class Profesional(models.Model):
     correo = models.EmailField()
     foto = models.ImageField(upload_to="profesional")
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    #usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    #cargo= models.ForeignKey(Cargo, on_delete = models.PROTECT)
+
 
     def nombre_completo(self):
         return "{} {}".format(self.nombre, self.apellidoPaterno)

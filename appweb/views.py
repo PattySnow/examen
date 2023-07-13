@@ -401,6 +401,13 @@ def detallePostulacion(request, pk):
     }
     return render(request, "verPostulacion.html", data)
 
+def ver_contacto(request):
+    contactos = Contacto.objects.all()
+    context = {
+        'contactos': contactos,
+    }
+    return render(request, 'verContacto.html', context)
+
 
 
 

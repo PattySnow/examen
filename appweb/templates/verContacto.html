@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h2>Formularios de Contacto</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>RUT</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Motivo</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contacto in contactos %}
+                <tr>
+                    <td>{{ contacto.nombre }}</td>
+                    <td>{{ contacto.apellido_Paterno }}</td>
+                    <td>{{ contacto.rut }}</td>
+                    <td>{{ contacto.email }}</td>
+                    <td>{{ contacto.telefono }}</td>
+                    <td>{{ contacto.get_motivo_display }}</td>
+                    <td>{{ contacto.mensaje }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

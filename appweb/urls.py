@@ -25,5 +25,6 @@ urlpatterns = [
     path('trabaja-con-nosotros/', trabajaConNostros, name='trabajaConNosotros'),
     path('postulaciones/', listarPostulacion, name='listar_postulaciones'),
     path('ver-postulacion/<int:pk>/', detallePostulacion, name='detalle_postulacion'),
+    path('ver-contactos/', ver_contacto, name='ver-contacto'),
 
 ]   
