@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-8" style="margin: auto; margin-top: 10px">
+        <div class="card">
+          <div class="card-header text-center">
+            Registrar Mecanico
+          </div>
+          <div class="card-body">
+            {{ mensaje }}
+            <form class="row" id="registroForm" action="" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" name="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" class="form-control" name="apellido" required>
+              </div>
+              <div class="form-group">
+                <label for="rut">RUT:</label>
+                <input type="text" class="form-control" name="rut" required>
+              </div>
+              <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="text" class="form-control" name="correo" required>
+              </div>
+              <div class="form-group">
+                <label for="password1">Contraseña:</label>
+                <input type="password" class="form-control" name="password1" required>
+              </div>
+              <div class="form-group">
+                <label for="password2">Repetir contraseña:</label>
+                <input type="password" class="form-control mb-4" name="password2" required>
+              </div>
+              <div class="form-group">
+                <label for="foto">Foto:</label>
+                <input type="file" class="form-control mb-4" name="foto">
+              </div>
+              <div class="container-btn text-center">
+                <button type="submit"  class="btn btn-primary">Registrar</button>
+                <button type="reset" class="btn btn-primary">Limpiar</button>
+                <button type="reset" class="btn btn-primary" onclick="goBack()">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+{% endblock %}

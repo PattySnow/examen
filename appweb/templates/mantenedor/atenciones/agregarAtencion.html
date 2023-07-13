@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+
+<div class="container mt-5">
+  <div class="text-center">
+    <h3>Agregar Atencion</h3>
+  </div>
+
+  <form id="formAddProf" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token%}
+
+    {{form | crispy}}
+
+
+    <button type="submit" class="btn btn-success">Agregar</button>
+    <button type="reset" class="btn btn-primary">Limpiar</button>
+    <input type="reset" value="Cancelar" class="btn btn-danger" onclick="goBack()">
+
+  </form>
+  {{mensaje}}
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}

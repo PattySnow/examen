@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+
+
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2 class="mt-4 mb-5">Atenciones en Espera</h2>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            {% for atencion in atenciones %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <img src="{{ atencion.foto.url }}" class="card-img-top" alt="...">
+                        </div>
+
+                        <div class="card-body">
+                            <h6 class="card-title">{{ atencion.titulo }}</h6>
+                            <p class="card-text">Categoría: {{ atencion.get_categoria_display }}</p>
+                            <p class="card-text">Descripción: {{ atencion.descripcion }}</p>
+                            <p class="card-text">Mecánico: {{ atencion.mecanico }}</p>
+                            <!-- Agrega aquí más campos de datos de la atención según tus necesidades -->
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-center">
+                            <div class="btn-group" role="group" aria-label="Acciones">
+                                {% if atencion.estado == 0 %}
+                                    <form method="POST" action="{% url 'aprobar_atencion' atencion_id=atencion.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary mr-2">Aprobar</button>
+                                    </form>
+                                    <button type="button" class="btn btn-danger" onclick="mostrarMotivoRechazo('{{ atencion.id }}')">Rechazar</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% if atenciones|length > 0 %}
+        <script>
+            function mostrarMotivoRechazo(atencionId) {
+                const motivo = prompt('Ingrese el motivo de rechazo:');
+                if (motivo) {
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/atencion/rechazar/' + atencionId + '/';
+                    form.style.display = 'none';
+                    document.body.appendChild(form);
+
+                    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                    const motivoInput = document.createElement('input');
+                    motivoInput.type = 'hidden';
+                    motivoInput.name = 'motivo_rechazo';
+                    motivoInput.value = motivo;
+                    form.appendChild(motivoInput);
+
+                    const csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrfmiddlewaretoken';
+                    csrfInput.value = csrfToken;
+                    form.appendChild(csrfInput);
+
+                    form.submit();
+                }
+            }
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<style>
+    .custom-card-header {
+        height: 200px; /* Tamaño deseado para el header */
+    }
+
+    .card-header img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ajusta la imagen al tamaño del header */
+    }
+
+    .card-body {
+        height: auto;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h2 class="mt-4 mb-5">Galeria de Trabajos</h2>
+    </div>
+
+    <h3 style="color: red;">{{ mensaje }}</h3>
+
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row card-container">
+                {% for atencion in atenciones %}
+                <div class="col-md-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header custom-card-header">
+                            <img src="{{ atencion.foto.url }}" class="card-img-top" alt="...">
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ atencion.titulo }}</h5>
+                            <h6 class="card-title">Categoria: {{ atencion.get_categoria_display }}</h6>
+                            <h6 class="card-title">Mecánico: <span title="{{ atencion.mecanico }}">{{ atencion.mecanico }}</span></h6>
+                            <p class="card-text">Descripcion: {{ atencion.descripcion }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const cardBodies = document.querySelectorAll('.card-body');
+        let maxHeight = 0;
+
+        cardBodies.forEach((cardBody) => {
+            if (cardBody.clientHeight > maxHeight) {
+                maxHeight = cardBody.clientHeight;
+            }
+        });
+
+        cardBodies.forEach((cardBody) => {
+            cardBody.style.height = maxHeight + 'px';
+        });
+    });
+</script>
+
+{% endblock %}

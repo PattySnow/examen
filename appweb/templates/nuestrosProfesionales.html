@@ -1,0 +1,47 @@
+{% extends 'base.html'%} {% load static %} {% block contenido %}
+
+<div class="team-boxed">
+  <div class="container">
+    <div class="intro">
+      <h2 class="text-center">Equipo</h2>
+      <p class="text-center">
+        Contamos con un grupo de expertos en las diferentes áreas de la mecánica
+        automotriz para ofrecerle un servicio completo, eficiente y rápido como
+        ¡Rayo Makween!.
+      </p>
+    </div>
+
+
+
+    <div class="team-boxed">
+
+      <div class="row people">
+        {% for p in profesionales %}
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12  mx-auto">
+          <div class="prof int">
+            <figure>
+              <a href="#">
+                {% if p.foto %}
+                <img width="270" height="270" src="{{p.foto.url}}" class="img-responsive wp-post-image rounded-circle" alt=""
+                  decoding="async" loading="lazy">
+                
+                {% endif %}
+              </a>
+              <h4 class="nombre white text-center">{{ p.nombre|title }} {{ p.apellidoPaterno|title }}</h4>
+
+            </figure>
+           
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    
+    </div>
+    
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+
+<!-- Inicio Formulario de Contacto -->
+<div class="d-flex justify-content-center align-items-center" id="contacto">
+  <div class="card card-sm w-50 shadow">
+    <div class="card-body">
+      <h3 class="card-title mb-4 my-4 text-center">Contacto</h3>
+      <form id="formularioContacto" action="" method="post">
+        {% csrf_token %}
+
+        {{ form | crispy }}
+
+        <button type="submit" class="btn btn-primary me-2">Enviar</button>
+        <button type="reset" class="btn btn-warning me-2">Limpiar</button>
+      </form>
+      {{ mensaje }}
+    </div>
+  </div>
+</div>
+<!-- Fin Formulario de Contacto -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formularioContacto");
+    const nombreInput = document.getElementById("id_nombre");
+    const telefonoInput = document.getElementById("id_telefono");
+    const correoInput = document.getElementById("id_correo");
+    const consultaInput = document.getElementById("id_consulta");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const nombre = nombreInput.value;
+      const telefono = telefonoInput.value;
+      const correo = correoInput.value;
+      const consulta = consultaInput.value;
+
+      if (telefono.length < 9) {
+        alert("El número de teléfono debe tener 9 dígitos.");
+        return;
+      }
+
+      form.reset();
+    });
+  });
+</script>
+
+{% endblock %}

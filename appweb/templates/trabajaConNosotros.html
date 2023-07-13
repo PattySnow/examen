@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+
+<!-- Inicio Formulario de Postulacion -->
+<div class="d-flex justify-content-center align-items-center my-4 " id="Postulacion">
+  <div class="card card-sm w-50 shadow">
+    <div class="card-body">
+      <h3 class="card-title mb-4 my-4 text-center">Trabaja con nosotros</h3>
+      <form id="TrabajaConNosotrosForm" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form | crispy }}
+      <p>* Describe tu experiencia laboral en caso de tenerla</p>
+        <button type="submit" class="btn btn-primary me-2">Postular</button>
+        <button type="reset" class="btn btn-warning me-2">Limpiar</button>
+      </form>
+      {{ mensaje }}
+    </div>
+  </div>
+</div>
+<!-- Fin Formulario de Postulacion -->
+
+
+
+{% endblock %}

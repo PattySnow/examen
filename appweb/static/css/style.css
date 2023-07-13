@@ -1,0 +1,242 @@
+body {
+
+
+  font-family: 'Poppins', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'MAGNETO';
+  src: url('fonts/MAGNETOB.TTF') format('truetype');
+}
+
+#logoNav {
+  font-family: 'MAGNETO';
+  color: #313437;
+  font-size: 1.5rem;
+
+}
+
+.navbar-collapse {
+  z-index: 1;
+  background-color: #f8f9fa;
+
+}
+
+.navbar-toggler {
+  margin-left: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+
+
+
+.footer {
+  padding: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+
+#titulo {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #eceff1;
+  color: #424242;
+  border-radius: 10%;
+}
+
+#logo {
+  margin-top: 70px;
+  margin-bottom: 40px;
+  width: 72px;
+  height: 57px;
+}
+
+.formulario-loggin {
+  padding-left: 30%;
+  padding-right: 30%;
+  padding-bottom: 30%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#contacto {
+
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  align-items: center;
+
+
+}
+
+#punto {
+  color: red;
+  margin-left: 0%;
+  font-size: 2rem;
+}
+
+
+
+.asterisco {
+  color: red;
+}
+
+.logo {
+  display: block;
+  text-align: center;
+}
+
+
+
+
+
+<!--nuestrosProfesionales-->
+.team-boxed {
+  color: #313437;
+  background-color: #5eda7d;
+}
+
+.team-boxed p {
+  color: #7d8285;
+}
+
+.team-boxed h2 {
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  color: inherit;
+}
+
+@media (max-width:767px) {
+  .team-boxed h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+  }
+}
+
+.team-boxed .intro {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.team-boxed .intro p {
+  margin-bottom: 0;
+}
+
+.team-boxed .people {
+  padding: 50px 0;
+}
+
+.team-boxed .item {
+  text-align: center;
+}
+
+.team-boxed .item .box {
+  text-align: center;
+  padding: 30px;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+.team-boxed .item .name {
+  font-weight: bold;
+  margin-top: 28px;
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.team-boxed .item .title {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #d0d0d0;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.team-boxed .item .description {
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.team-boxed .item img {
+  max-width: 160px;
+}
+
+.team-boxed .social {
+  font-size: 18px;
+  color: #a2a8ae;
+}
+
+.team-boxed .social a {
+  color: inherit;
+  margin: 0 10px;
+  display: inline-block;
+  opacity: 0.7;
+}
+
+.team-boxed .social a:hover {
+  opacity: 1;
+}
+
+
+
+#agregar {
+  margin: 10px 0;
+  text-align: end;
+}
+
+
+.nav_loggin {
+  justify-content: flex-end;
+  padding: 0 1rem;
+}
+
+#notificaciones {
+  display: inline-block;
+  margin-right: 50px;
+  width: 30px;
+  height: 30px;
+
+  background-color: rgb(235, 232, 232);
+  text-align: center;
+  line-height: 30px;
+}
+
+.notification-icon i {
+  color: #313437;
+  border-style: none;
+}
+
+.small {
+  font-size: 0.5rem;
+
+}
+
+
+.dropdown-item.small-text {
+  font-size: 0.8rem;
+  /* ajustar el tamaño de fuente */
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  /* ajustar el padding vertical */
+}
+
+a {
+  text-decoration: none;
+  color: #313437;
+}

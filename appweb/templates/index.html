@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block contenido %}
+<style>
+
+.carrusel-container {
+  width: 50%;
+  margin: 0 auto; /* Establece los márgenes izquierdo y derecho a "auto" para centrar horizontalmente */
+  margin-bottom: 20px;
+}
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7); /* Establece un fondo oscuro translúcido */
+  color: white; /* Establece el color de texto en blanco */
+  padding: 10px; /* Añade un relleno interno de 10px (ajústalo según sea necesario) */
+  
+}
+
+</style>
+
+<div id="carouselExampleCaptions" class="carousel slide carrusel-container" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for atencion in atenciones_aprobadas %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <a href="{% url 'ver_atencion' atencion_id=atencion.pk %}">
+          <img src="{{ atencion.foto.url }}" class="d-block w-100" alt="{{ atencion.titulo }}">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ atencion.titulo }}</h5>
+            <p>{{ atencion.descripcion }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+{% endblock %}
