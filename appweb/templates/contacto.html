@@ -25,30 +25,29 @@
 </div>
 <!-- Fin Formulario de Contacto -->
 
+{% endblock %}
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formularioContacto");
-    const nombreInput = document.getElementById("id_nombre");
-    const telefonoInput = document.getElementById("id_telefono");
-    const correoInput = document.getElementById("id_correo");
-    const consultaInput = document.getElementById("id_consulta");
 
     form.addEventListener("submit", (event) => {
-      event.preventDefault();
+      event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
 
-      const nombre = nombreInput.value;
-      const telefono = telefonoInput.value;
-      const correo = correoInput.value;
-      const consulta = consultaInput.value;
-
-      if (telefono.length < 9) {
-        alert("El número de teléfono debe tener 9 dígitos.");
-        return;
-      }
-
-      form.reset();
+      // Realiza la solicitud AJAX para enviar el formulario
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: form.method,
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza el mensaje de respuesta en el template
+        document.getElementById("mensaje").textContent = data.mensaje;
+      })
+      .catch(error => {
+        console.log(error);
+      });
     });
   });
 </script>
-
-{% endblock %}

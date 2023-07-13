@@ -36,23 +36,23 @@ def base(request):
 
 
 def contacto(request):
-
     data = {
-        'form': ContactoForm,
-        'mensaje':""
+        'form': ContactoForm(),
+        'mensaje': ""
     }
 
     if request.method == "POST":
-        formulario = ContactoForm(data=request.POST)
+        formulario = ContactoForm(request.POST)
 
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Contacto guardado"
         else:
             data['form'] = formulario
-            data['mensaje'] = "Ocurrio un error"
+            data['mensaje'] = "Ocurrió un error"
 
-    return render(request, "contacto.html",data )
+    return render(request, "contacto.html", data)
+
 
 
 
