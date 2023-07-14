@@ -262,11 +262,9 @@ def galeria_atenciones(request):
     atenciones_aprobadas = Atencion.objects.filter(estado=1).order_by('-id')
 
     if valor_buscado:
-        categorias = [categoria[1] for categoria in Categoria if valor_buscado.lower() in categoria[1].lower()]
         atenciones = atenciones_aprobadas.filter(
             Q(mecanico__nombre__icontains=valor_buscado) |
-            Q(mecanico__apellidoPaterno__icontains=valor_buscado) |
-            Q(categoria__in=categorias)
+            Q(mecanico__apellidoPaterno__icontains=valor_buscado)
         )
     else:
         atenciones = atenciones_aprobadas
@@ -276,6 +274,8 @@ def galeria_atenciones(request):
         'atenciones': atenciones,
     }
     return render(request, 'galeria_atenciones.html', context)
+
+
 
 
 

@@ -57,16 +57,12 @@ EstadoAtencion = [
  
 class Atencion(models.Model):
     foto = models.ImageField(null=True)
-    categoria = models.CharField(max_length=20, choices=Categoria)
+    categoria = models.IntegerField(choices=Categoria)
     titulo = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
     mecanico = models.ForeignKey(Profesional, null=True, on_delete=models.CASCADE)
     estado = models.IntegerField(choices=EstadoAtencion, default=0)
     motivoRechazo = models.CharField(max_length=100, null=True)
-
-    def __str__(self):
-        return self.titulo
-
 
     def __str__(self):
         return self.titulo
